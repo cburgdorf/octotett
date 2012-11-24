@@ -1,0 +1,50 @@
+/*card counter*/
+.card-counter{
+    color: #f0f0f0;
+    text-shadow: 0 0 10px white;
+}
+
+/*card image*/
+
+.card-image{
+    padding: 5px;
+}
+
+/*Layouts for the property box*/
+
+.card-data .left-box{
+    float: left;
+    width: 50%;
+
+    background: #c6c6c6;
+    border-right: 3px solid white;
+    color: white;
+    font-weight: bold;
+}
+
+.card-data .right-box{
+    float: right;
+    width: 50%;
+
+    background: #dbdbdb;
+    color: #929292;
+}
+
+.card-data .col {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid white;
+    position: relative;
+}
+
+.card-data .col span {
+    padding-left: 4px;
+}
+
+.card-data .x-button {
+    position: absolute;
+    right: 3px;
+    display: inline;
+    float: right;
+    margin: 5px 10px 5px 0px;
+}
