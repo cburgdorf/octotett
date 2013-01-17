@@ -44,26 +44,8 @@
             "update": "delta"
         },
         {
-            "path": "libs/quartettjs/quartett.core.js",
+            "path": "libs/quartettjs/quartett.js",
 
-        },
-        {
-            "path": "libs/quartettjs/quartett.cardstack.js"
-        },
-        {
-            "path": "libs/quartettjs/quartett.card.js"
-        },
-        {
-            "path": "libs/quartettjs/quartett.defaultcardcomparer.js"
-        },
-        {
-            "path": "libs/quartettjs/quartett.player.js"
-        },
-        {
-            "path": "libs/quartettjs/quartett.util.js"
-        },
-        {
-            "path": "libs/quartettjs/quartett.game.js"
         },
         {
             "path": "libs/quartettjs/quartett.data.js"
