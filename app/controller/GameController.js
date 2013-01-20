@@ -26,29 +26,36 @@ Ext.define('QuartettApp.controller.GameController', {
         var gameOptions = {
             player: [
                 {
-                    name: 'Me',
-                    cardLost: function(card, winnerCard, property){
-                        me._onUserLostCard(card, winnerCard, property);
-                    },
-                    cardsWon: function(cards, property){
-                        me._onUserWonCards(cards, property);
-                    }
-                }, 'Computer'],
+                    name: 'Me'
+                },
+                'Computer'
+            ],
             cards: quartett.data.getCards(),
-            activePlayerChanged: function(game){
-                me._updateActivePlayer(game);
-            },
-            gameMoved: function(game){
-                me._onGameMoved(game);
-            },
-            drawHappened: function(game, data){
-                me._onDrawHappened(game, data);
-            },
             shuffle: true
         };
 
         var game = this._game = new quartett.Game(gameOptions);
         var myPlayer = this._myPlayer = game.getMe();
+
+        myPlayer.on('cardLost', function(card, winnerCard, property){
+            me._onUserLostCard(card, winnerCard, property);
+        });
+
+        myPlayer.on('cardsWon',function(cards, property){
+            me._onUserWonCards(cards, property);
+        });
+
+        game.on('activePlayerCHanged',function(game){
+            me._updateActivePlayer(game);
+        });
+
+        game.on('gameMoved', function(game){
+            me._onGameMoved(game);
+        });
+
+        game.on('drawHappened', function(game, data){
+            me._onDrawHappened(game, data);
+        });
 
         this._validProperties = QuartettApp.helper.Helper
             .cardsToArrayOfKeyValuePairs(myPlayer.getTopmostCard())
@@ -58,8 +65,6 @@ Ext.define('QuartettApp.controller.GameController', {
             .map(function(pair){
                 return pair.key;
             });
-
-
 
         game.start('Me');
         var card = game.getMe().getTopmostCard();
@@ -71,7 +76,7 @@ Ext.define('QuartettApp.controller.GameController', {
         gameView.writeCardCount(myPlayer.getCardCount());
     },
     _updateActivePlayer: function(game){
-        var whosTurn = game.getActivePlayer().getName() === 'Me' ? 'Your turn' : 'Computer\'s turn'
+        var whosTurn = game.getActivePlayer().getName() === 'Me' ? 'Your turn' : 'Computer\'s turn';
         this.getGameView().writeTitle(whosTurn);
     },
     _onPropertyTap: function(property){
@@ -111,7 +116,7 @@ Ext.define('QuartettApp.controller.GameController', {
             .next(function(){
 
                 if(me._game.isFinished()){
-                    me._notifyGameFinished(me._game.getActivePlayer())
+                    me._notifyGameFinished(me._game.getActivePlayer());
                     return Deferred.fail();
                 }
                 else{
@@ -132,7 +137,7 @@ Ext.define('QuartettApp.controller.GameController', {
         QuartettApp.view.CardActionOverlay.flashWin(data)
                                           .next(function(){
                                               if (me._game.isFinished()){
-                                                  me._notifyGameFinished(me._game.getActivePlayer())
+                                                  me._notifyGameFinished(me._game.getActivePlayer());
                                               }
                                           });
     },
@@ -148,7 +153,7 @@ Ext.define('QuartettApp.controller.GameController', {
             QuartettApp.view.CardActionOverlay.flashComputersDraw({ playedProperty: options.property, value: value.value })
                                               .next(function(){
                                                   me._computersTurn();
-                                              })
+                                              });
         }
 
     },
@@ -167,7 +172,7 @@ Ext.define('QuartettApp.controller.GameController', {
             });
     },
     _notifyGameFinished: function(winner){
-        var winner = winner.getName();
+        winner = winner.getName();
         var displayWinner = winner === 'Me' ? 'You' : winner;
         Ext.Msg.show({
             title: 'Game Finished',
