@@ -8,14 +8,13 @@ quartett.OctotettCardComparer.prototype.getSortFuncForProperty = function(proper
     //younger projects lose
     if (property === 'birth'){
         return function(a, b){
-            return a > b ? -1 : a === b ? 0 : 1;
+            //just switch the order of the parameters and use the default implementation
+            return quartett.DefaultCardComparer.prototype.getSortFuncForProperty(property)(b, a);
         };
     }
     else {
         //for all other properties: the greater, the better
-        return function(a, b){
-            return a < b ? -1 : a === b ? 0 : 1;
-        };
+        return quartett.DefaultCardComparer.prototype.getSortFuncForProperty(property);
     }
 };
 
