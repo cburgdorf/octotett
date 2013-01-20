@@ -31,7 +31,8 @@ Ext.define('QuartettApp.controller.GameController', {
                 'Computer'
             ],
             cards: quartett.data.getCards(),
-            shuffle: true
+            shuffle: true,
+            cardComparer: quartett.OctotettCardComparer
         };
 
         var game = this._game = new quartett.Game(gameOptions);
