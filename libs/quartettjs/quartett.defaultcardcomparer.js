@@ -1,1 +1,0 @@
-(function(b,a){b.DefaultCardComparer=function(){};b.DefaultCardComparer.prototype.getSortFuncForProperty=function(c){return function(e,d){return e<d?-1:e===d?0:1}}})(quartett);
