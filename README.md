@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/cburgdorf/octotett.png?branch=master)](https://travis-ci.org/cburgdorf/octotett)
+
 It's a Top Trumps game based on github projects
 
 You can play the game at: http://hannoverjs.github.com/game-off-2012/
