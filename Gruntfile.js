@@ -67,7 +67,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  //grunt.registerTask('default', ['sencha_dependencies:app']);
   grunt.registerTask('default', ['clean:app', 'sencha_dependencies:app', 'uglify:app', 'copy:app']);
 
 };
