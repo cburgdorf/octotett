@@ -27,3 +27,7 @@ $tabs-dark: $base-color;
 // Your custom code goes here...
 
 @include sencha-button-ui('play', #f77800, 'matte');
+
+@import 'app-overwrites.scss';
+@import 'CardActionOverlay.scss';
+@import 'GameView.scss';

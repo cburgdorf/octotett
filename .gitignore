@@ -3,3 +3,4 @@
 spec/*lock*
 build/*
 archive/*
+dest/*
