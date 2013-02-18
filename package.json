@@ -11,5 +11,9 @@
     "url": "https://github.com/cburgdorf/octotett.git"
   },
   "author": "Christoph Burgdorf",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.0rc8",
+    "domino": "~1.0.8"
+  }
 }
