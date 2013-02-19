@@ -6,6 +6,14 @@ Ext.Loader.setPath({
     'Ext.ux': 'libs/ux'
 });
 
+Ext.require([
+    'QuartettApp.services.TestService'
+]);
+
+//we need to have an instance of this service early in the process so that
+//it can be accessed from within the init method of the controllers
+QuartettApp.TestService = Ext.create('QuartettApp.services.TestService');
+
 Ext.application({
     name: 'QuartettApp',
 
