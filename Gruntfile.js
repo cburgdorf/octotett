@@ -13,7 +13,7 @@ module.exports = function(grunt) {
               senchaDir: 'touch',
               isTouch: true,
               printDepGraph: true,
-              mode: 'dynMock'
+              mode: 'phantom'
           }
       }
     },
